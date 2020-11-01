@@ -26,6 +26,8 @@ static BACKEND_VALUES: &[&str] = &[
     "portaudio",
     #[cfg(feature = "rodio_backend")]
     "rodio",
+    #[cfg(feature = "sdl_backend")]
+    "sdl",
 ];
 
 /// The backend used by librespot
@@ -36,6 +38,7 @@ pub enum Backend {
     PortAudio,
     PulseAudio,
     Rodio,
+    Sdl,
 }
 
 impl FromStr for Backend {
@@ -47,6 +50,7 @@ impl FromStr for Backend {
             "portaudio" => Ok(Backend::PortAudio),
             "pulseaudio" => Ok(Backend::PulseAudio),
             "rodio" => Ok(Backend::Rodio),
+            "sdl" => Ok(Backend::Sdl),
             _ => unreachable!(),
         }
     }
@@ -59,6 +63,7 @@ impl ToString for Backend {
             Backend::PortAudio => "portaudio".to_string(),
             Backend::PulseAudio => "pulseaudio".to_string(),
             Backend::Rodio => "rodio".to_string(),
+            Backend::Sdl => "sdl".to_string(),
         }
     }
 }
